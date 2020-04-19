@@ -15,8 +15,9 @@ set $mod Mod1
 hide_edge_borders none
 
 # change borders
+#border none
 bindsym $mod+u border none
-bindsym $mod+y border pixel 1
+bindsym $mod+y border pixel 0
 bindsym $mod+n border normal
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -56,8 +57,8 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 
 # Start Applications
 bindsym $mod+Ctrl+b exec gnome-terminal -e 'bmenu'
-bindsym $mod+F2 exec palemoon
-bindsym $mod+F3 exec pcmanfm
+#bindsym $mod+F2 exec palemoon
+bindsym $mod+F1 exec pcmanfm
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
 bindsym $mod+F5 exec terminal -e 'mocp'
@@ -320,7 +321,7 @@ set_from_resource $term_color15    color15
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
- i3bar_command i3bar
+#i3bar_command i3bar
   status_command bumblebee-status -m time -p time.format="%H:%M" -t gruvbox
 	position top 
 
@@ -416,3 +417,9 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+# Hide window title bars always
+for_window [class="^.*"] border pixel 1
+new_window 1pixel
+
+#Enable floating notifications for microsoft teams for chat windows
+for_window [title="Microsoft Teams Notification"] floating enable
